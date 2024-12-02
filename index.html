@@ -8,23 +8,21 @@
   </head>
 
   <body>
-    <div class="rounds">
+    <div class="roundsContainer">
       <h2>How many rounds?</h2>
-      <input id="five" type="radio" value="5" name="roundsNum" checked /><label
-        for=""
-        >5</label
-      >
-      <input id="ten" type="radio" value="10" name="roundsNum" /><label for=""
-        >10</label
-      >
-      <input id="fifteen" type="radio" value="15" name="roundsNum" /><label
-        for=""
-        >15</label
-      >
-      <input id="twenty" type="radio" value="20" name="roundsNum" /><label
-        for=""
-        >20</label
-      >
+      <div class="rounds">
+        <input id="five" type="radio" value="5" name="roundsNum" checked />
+        <label for="five">5</label>
+
+        <input id="ten" type="radio" value="10" name="roundsNum" />
+        <label for="ten">10</label>
+
+        <input id="fifteen" type="radio" value="15" name="roundsNum" />
+        <label for="fifteen">15</label>
+
+        <input id="twenty" type="radio" value="20" name="roundsNum" />
+        <label for="twenty">20</label>
+      </div>
     </div>
 
     <div class="score">
@@ -50,8 +48,10 @@
       <div class="circle" id="scissors"><p>✌️</p></div>
     </div>
 
+    <h3 class="finalMessage"></h3>
     <p>MAKE YOUR MOVE.</p>
     <a href="./index.html">restart</a>
+
 
     <script type="module" src="./app.ts"></script>
   </body>

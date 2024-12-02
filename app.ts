@@ -1,3 +1,4 @@
+const rounds = document.querySelector(".rounds") as HTMLDivElement;
 const radio5 = document.getElementById("five") as HTMLInputElement;
 const radio10 = document.getElementById("ten") as HTMLInputElement;
 const radio15 = document.getElementById("fifteen") as HTMLInputElement;
@@ -5,17 +6,18 @@ const radio20 = document.getElementById("twenty") as HTMLInputElement;
 const yourScore = document.getElementById("you") as HTMLParagraphElement;
 const compScore = document.getElementById("comp") as HTMLParagraphElement;
 const scores = document.querySelector("h3") as HTMLHeadingElement;
-const roundsContainer = document.querySelector(".rounds") as HTMLDivElement;
+const roundsContainer = document.querySelector(".roundsContainer") as HTMLDivElement;
 const rock = document.getElementById("rock") as HTMLDivElement;
 const paper = document.getElementById("paper") as HTMLDivElement;
 const scissors = document.getElementById("scissors") as HTMLDivElement;
 const message = document.querySelector("h1") as HTMLHeadingElement;
+const finalMessage = document.querySelector(".finalMessage") as HTMLHeadingElement;
 
 let i = 0;
 let you = 0;
 let comp = 0;
 const showRounds = document.createElement("p");
-showRounds.setAttribute("class", "numberOFRounds");
+showRounds.setAttribute("class", "numberOfRounds");
 roundsContainer.appendChild(showRounds);
 
 function playGame() {
@@ -31,16 +33,11 @@ function chooseRock(event: Event) {
     yourScore.textContent = "✊";
     showRounds.textContent = i + " / " + radioValue;
     whoWins(1);
-  } else {
-    if (you > comp) {
-      message.textContent = "Yeaaah you Won";
-    } else if (you < comp) {
-      message.textContent = "Oh noo you're a looser";
-    } else {
-      message.textContent = "We're equal";
-    }
-  }
+  } 
   i++;
+  if (i > radioValue) {
+    gameFinished();
+  }    
 }
 
 function choosePaper(event: Event) {
@@ -54,6 +51,9 @@ function choosePaper(event: Event) {
     whoWins(2);
   }
   i++;
+  if (i > radioValue) {
+    gameFinished();
+  }    
 }
 
 function chooseScissor(event: Event) {
@@ -67,6 +67,9 @@ function chooseScissor(event: Event) {
     whoWins(3);
   }
   i++;
+  if (i > radioValue) {
+    gameFinished();
+  }    
 }
 
 rock.addEventListener("click", chooseRock);
@@ -74,10 +77,11 @@ paper.addEventListener("click", choosePaper);
 scissors.addEventListener("click", chooseScissor);
 
 function clearRadioTags() {
-  const radioTags = document.querySelectorAll("input");
-  radioTags.forEach((pTag) => pTag.remove());
-  const labelTags = document.querySelectorAll("label");
-  labelTags.forEach((pTag) => pTag.remove());
+rounds.style.display = "none";
+  // const radioTags = document.querySelectorAll("input");
+  // radioTags.forEach((pTag) => pTag.remove());
+  // const labelTags = document.querySelectorAll("label");
+  // labelTags.forEach((pTag) => pTag.remove());
 }
 
 function whoWins(number: number) {
@@ -120,6 +124,16 @@ function whoWins(number: number) {
   }
 }
 
+const gameFinished = () => {
+  if (you > comp) {
+    finalMessage.textContent = "Yeaaah, you won";
+  } else if (you < comp) {
+    finalMessage.textContent = "Oh no! You lost";
+  } else {
+    finalMessage.textContent = "We're equal";
+  }
+
+}
 function checkChosenValue() {
   if (radio5.checked) {
     return 5;
