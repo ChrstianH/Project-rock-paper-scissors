@@ -6,19 +6,23 @@ const radio20 = document.getElementById("twenty") as HTMLInputElement;
 const yourScore = document.getElementById("you") as HTMLParagraphElement;
 const compScore = document.getElementById("comp") as HTMLParagraphElement;
 const scores = document.querySelector("h3") as HTMLHeadingElement;
-const roundsContainer = document.querySelector(".roundsContainer") as HTMLDivElement;
+const roundsContainer = document.querySelector(
+  ".roundsContainer"
+) as HTMLDivElement;
 const rock = document.getElementById("rock") as HTMLDivElement;
 const paper = document.getElementById("paper") as HTMLDivElement;
 const scissors = document.getElementById("scissors") as HTMLDivElement;
 const message = document.querySelector("h1") as HTMLHeadingElement;
-const finalMessage = document.querySelector(".finalMessage") as HTMLHeadingElement;
+const finalMessage = document.querySelector(
+  ".finalMessage"
+) as HTMLHeadingElement;
+const showRounds = document.querySelector(
+  ".numberOfRounds"
+) as HTMLParagraphElement;
 
 let i = 0;
 let you = 0;
 let comp = 0;
-const showRounds = document.createElement("p");
-showRounds.setAttribute("class", "numberOfRounds");
-roundsContainer.appendChild(showRounds);
 
 function playGame() {
   clearRadioTags();
@@ -33,11 +37,11 @@ function chooseRock(event: Event) {
     yourScore.textContent = "✊";
     showRounds.textContent = i + " / " + radioValue;
     whoWins(1);
-  } 
+  }
   i++;
   if (i > radioValue) {
     gameFinished();
-  }    
+  }
 }
 
 function choosePaper(event: Event) {
@@ -53,7 +57,7 @@ function choosePaper(event: Event) {
   i++;
   if (i > radioValue) {
     gameFinished();
-  }    
+  }
 }
 
 function chooseScissor(event: Event) {
@@ -69,7 +73,7 @@ function chooseScissor(event: Event) {
   i++;
   if (i > radioValue) {
     gameFinished();
-  }    
+  }
 }
 
 rock.addEventListener("click", chooseRock);
@@ -77,7 +81,8 @@ paper.addEventListener("click", choosePaper);
 scissors.addEventListener("click", chooseScissor);
 
 function clearRadioTags() {
-rounds.style.display = "none";
+  rounds.style.display = "none";
+  showRounds.style.display = "block";
   // const radioTags = document.querySelectorAll("input");
   // radioTags.forEach((pTag) => pTag.remove());
   // const labelTags = document.querySelectorAll("label");
@@ -132,8 +137,7 @@ const gameFinished = () => {
   } else {
     finalMessage.textContent = "We're equal";
   }
-
-}
+};
 function checkChosenValue() {
   if (radio5.checked) {
     return 5;

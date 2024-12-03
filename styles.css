@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
   color: white;
+  font-family: sans-serif;
 }
 
 body {
@@ -17,14 +18,15 @@ h2 {
 .roundsContainer {
   color: white;
   border: 2px solid white;
-  padding: 3em;
-  margin-top: 2rem;
+  padding: 2em;
+  margin-top: 1rem;
 }
 .rounds {
   display: flex;
   justify-content: center;
   align-items: baseline;
   gap: 5px;
+  height: 44px;
 }
 input {
   margin-top: 2em;
@@ -37,14 +39,25 @@ label {
 .score {
   color: white;
   margin-top: 2rem;
+  margin-bottom: 1rem;
   border: 2px solid white;
-  padding: 4rem;
+  padding: 2.5rem;
   display: flex;
   align-items: center;
+  height: 230px;
+  width: 360px;
 }
 
 .container {
   padding: 0.8em;
+  font-size: 14px;
+  text-align: center;
+  width: 112px;
+}
+
+.scores {
+  width: 50px;
+  text-align: center;
 }
 
 .circle {
@@ -56,8 +69,18 @@ label {
 
 .game {
   display: flex;
+  font-size: 16px;
 }
 
 .numberOfRounds {
   text-align: center;
+  padding-top: 27px;
+  height: 44px;
+  display: none;
+}
+
+p#you,
+p#comp {
+  width: 17px;
+  height: 17px;
 }
